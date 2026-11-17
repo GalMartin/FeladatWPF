@@ -1,12 +1,17 @@
 ﻿<Window x:Class="FeladatWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FeladatWPF"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Dolgozatok"
+        Width="620"
+        Height="440"
+        MinWidth="610"
+        MinHeight="430"
+        FontFamily="Segoe UI"
+        FontSize="14"
+        Background="White"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="12,16,12,24">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="84" />
@@ -14,26 +19,74 @@
         </Grid.RowDefinitions>
 
         <DataGrid x:Name="DolgozatTabla"
-          Grid.Row="0"
-          AutoGenerateColumns="False"
-          IsReadOnly="True"
-          CanUserAddRows="False"
-          RowHeight="24"
-          ColumnHeaderHeight="30"
-          RowHeaderWidth="7"
-          Background="WhiteSmoke">
+                  Grid.Row="0"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  RowHeaderWidth="7"
+                  ColumnHeaderHeight="30"
+                  RowHeight="24"
+                  GridLinesVisibility="All"
+                  HorizontalGridLinesBrush="Black"
+                  VerticalGridLinesBrush="Black"
+                  RowBackground="White"
+                  Background="WhiteSmoke">
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Név"
-                            Binding="{Binding Nev}"
-                            Width="SizeToCells" />
+                                    Binding="{Binding Nev}"
+                                    Width="105" />
+
                 <DataGridTextColumn Header="Életkor"
-                            Binding="{Binding Eletkor}"
-                            Width="58" />
+                                    Binding="{Binding Eletkor}"
+                                    Width="58" />
+
                 <DataGridTextColumn Header="Pontszám"
-                            Binding="{Binding Pontszam}"
-                            Width="78" />
+                                    Binding="{Binding Pontszam}"
+                                    Width="78" />
             </DataGrid.Columns>
         </DataGrid>
 
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Bottom"
+                    Height="31"
+                    Margin="6,0,0,19">
+
+            <TextBlock Text="Név:"
+                       VerticalAlignment="Center"
+                       Margin="0,0,14,0" />
+
+            <TextBox x:Name="NevMezo"
+                     Width="186"
+                     VerticalContentAlignment="Center" />
+
+            <TextBlock Text="Életkor:"
+                       VerticalAlignment="Center"
+                       Margin="20,0,18,0" />
+
+            <TextBox x:Name="EletkorMezo"
+                     Width="62"
+                     VerticalContentAlignment="Center" />
+
+            <TextBlock Text="Pontszám:"
+                       VerticalAlignment="Center"
+                       Margin="20,0,14,0" />
+
+            <TextBox x:Name="PontszamMezo"
+                     Width="62"
+                     VerticalContentAlignment="Center" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Content="Hozzáadás"
+                    Width="125"
+                    Margin="0,0,12,0"
+                    Click="Hozzaadas_Click" />
+
+            <Button Content="Mentés"
+                    Width="125"
+                    Click="Mentes_Click" />
+        </StackPanel>
     </Grid>
 </Window>
